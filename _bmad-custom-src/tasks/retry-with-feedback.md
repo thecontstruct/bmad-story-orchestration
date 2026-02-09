@@ -3,7 +3,7 @@
 Execute an action with validation, automatically retry on failure up to max attempts, passing feedback from previous attempts to improve the next attempt.
 
 **Prerequisites:**
-- Load subprocess delegation skill: `{project-root}/.cursor/skills/subprocess-delegation/SKILL.md`
+- Load subprocess delegation skill: `{project-root}/.claude/skills/subprocess-delegation/SKILL.md`
 - This task uses `<delegate>` blocks which require the skill for proper interpretation
 
 ---

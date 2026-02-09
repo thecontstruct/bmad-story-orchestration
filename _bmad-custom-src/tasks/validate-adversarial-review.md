@@ -3,7 +3,7 @@
 Execute adversarial review via delegation and return validation outcome compatible with retry-with-feedback task.
 
 **Prerequisites:**
-- Load subprocess delegation skill: `{project-root}/.cursor/skills/subprocess-delegation/SKILL.md`
+- Load subprocess delegation skill: `{project-root}/.claude/skills/subprocess-delegation/SKILL.md`
 - This task uses `<delegate>` blocks which require the skill for proper interpretation
 
 ---

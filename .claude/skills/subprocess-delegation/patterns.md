@@ -39,7 +39,7 @@ Structured XML format for explicit delegation:
 
 **Explicit model:**
 ```xml
-<delegate model="opus-4.5-thinking">
+<delegate model="opus-4.6-thinking">
   <prompt>Implement payment processing module</prompt>
 </delegate>
 ```
@@ -125,7 +125,7 @@ Return structured findings."
 **Graceful degradation (if Advanced Elicitation unavailable):**
 - Perform assessment directly
 ```
-→ Routes to `opus-4.5-thinking` (explicit `model: reasoning`)
+→ Routes to `opus-4.6-thinking` (explicit `model: reasoning`)
 
 ## Pattern Recognition Notes
 
@@ -139,7 +139,7 @@ Return structured findings."
 
 If Task tool fails or is broken:
 
-1. **cursor-agent CLI**: Use `.cursor/skills/cursor-agent-cli/SKILL.md` for CLI-based delegation
+1. **cursor-agent CLI**: Use `.claude/skills/cursor-agent-cli/SKILL.md` for CLI-based delegation
    - Provides same isolation benefits
    - Requires cursor-agent installation
    - Use same model selection and safeguards

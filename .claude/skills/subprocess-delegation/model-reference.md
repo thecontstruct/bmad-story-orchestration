@@ -8,7 +8,7 @@ The router normalizes aliases to these canonical model names. CLI skills handle 
 
 | Canonical Model | Provider | CLI Skill | Aliases |
 |-----------------|----------|-----------|---------|
-| `opus-4.5-thinking` | Anthropic | claude-cli | `reasoning`, `planning` |
+| `opus-4.6-thinking` | Anthropic | claude-cli | `reasoning`, `planning` |
 | `sonnet-4.5` | Anthropic | claude-cli | `sonnet` |
 | `sonnet-4.5-thinking` | Anthropic | claude-cli | `sonnet-thinking` |
 | `gemini-3-pro` | Google | cursor-agent-cli | `review` |
@@ -22,7 +22,7 @@ The router normalizes aliases to these canonical model names. CLI skills handle 
 | `composer-1` | `delegate-composer-1` | Simple tasks, validation, repetitive work |
 | `gemini-3-pro` | `delegate-gemini-3-pro` | Code reviews, security audits, quality checks |
 | `gpt-5.2` | `delegate-gpt-5.2` | Analysis, evaluation, assessment tasks |
-| `opus-4.5-thinking` | `delegate-opus-4.5-thinking` | Complex implementation, architecture, planning |
+| `opus-4.6-thinking` | `delegate-opus-4.6-thinking` | Complex implementation, architecture, planning |
 
 ## Heuristic-Based Selection
 
@@ -36,7 +36,7 @@ When no model is explicitly specified, analyze task content for keywords:
 - Keywords: "analyze", "examine", "evaluate", "assess", "investigate"
 - Best for: Data analysis, requirements evaluation, document assessment
 
-### Architecture/Planning → `opus-4.5-thinking`
+### Architecture/Planning → `opus-4.6-thinking`
 - Keywords: "architecture", "design", "plan", "implement", "build", "create complex", "debug", "troubleshoot"
 - Best for: System design, complex implementations, debugging, multi-step planning
 
@@ -49,9 +49,9 @@ When no model is explicitly specified, analyze task content for keywords:
 
 BMAD workflows often use these model assignments:
 
-- **create_story**: `opus-4.5-thinking` (complex creation)
+- **create_story**: `opus-4.6-thinking` (complex creation)
 - **validate_story**: `gpt-5.2` (analysis/evaluation)
-- **dev_story**: `opus-4.5-thinking` (implementation)
+- **dev_story**: `opus-4.6-thinking` (implementation)
 - **code_review**: `gemini-3-pro` (review)
 - **fix_validation**, **fix_review**: `composer-1` (simple fixes)
 

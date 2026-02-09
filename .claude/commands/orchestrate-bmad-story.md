@@ -16,4 +16,3 @@ The workflow will:
 - Execute sub-workflows (create-story, dev-story, code-review)
 - Present human checkpoint before commit
 - Commit and merge on approval
-

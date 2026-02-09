@@ -5,7 +5,7 @@ Reference material for edge cases and detailed specifications. Consult when need
 ## Model Fallback Chain
 
 When a model fails, try the next in chain:
-- `opus-4.5-thinking` → `sonnet-4.5-thinking` → `sonnet-4.5`
+- `opus-4.6-thinking` → `sonnet-4.5-thinking` → `sonnet-4.5`
 - `gpt-5.2` → `composer-1`
 - `gemini-3.0-pro` → `composer-1`
 - Unknown → `composer-1`

@@ -1,7 +1,7 @@
 ---
-name: delegate-opus-4.5-thinking
-model: claude-4.5-opus-high-thinking
-description: Execute delegated work with opus-4.5-thinking. Invoke via /delegate-opus-4.5-thinking for architecture, planning, complex implementation, debugging.
+name: delegate-opus-4.6-thinking
+model: claude-4.6-opus-high-thinking
+description: Execute delegated work with opus-4.6-thinking. Invoke via /delegate-opus-4.6-thinking for architecture, planning, complex implementation, debugging.
 ---
 
 Execute the delegated task provided in the prompt.

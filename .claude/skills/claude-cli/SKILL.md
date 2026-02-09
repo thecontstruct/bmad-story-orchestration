@@ -47,7 +47,7 @@ The router may pass canonical model names. Map them to Claude CLI aliases before
 
 | Router Passes | Use With CLI |
 |---------------|--------------|
-| `opus-4.5-thinking`, `opus` | `opus` |
+| `opus-4.6-thinking`, `opus` | `opus` |
 | `sonnet-4.5-thinking`, `sonnet-4.5`, `sonnet` | `sonnet` |
 | `haiku` | `haiku` |
 
@@ -76,8 +76,19 @@ Claude CLI also accepts full model strings: `--model claude-sonnet-4-5-20250929`
      --append-system-prompt "{safeguardedSystemPrompt}" \
      "{taskContent}" </dev/null
    ```
+   
+   **CRITICAL**: Always use `required_permissions: ['all']` when executing `claude` CLI commands via `run_terminal_cmd`. The tool needs:
+   - Write access to `~/.claude/` config directory
+   - Authentication credentials access
 
-5. Parse JSON response and extract `session_id` - store it for potential resume
+5. **Handle execution result**:
+   - **Success**: Parse JSON response and extract `session_id` - store it for potential resume
+   - **Timeout/Interruption**: 
+     * Try to extract `session_id` from any partial output
+     * Immediately run continuation command: `claude -c -p --dangerously-skip-permissions --output-format json "Please continue where you left off. If you were in the middle of a task, complete it." </dev/null`
+     * If `session_id` was captured, prefer: `claude -r "{session_id}" -p --dangerously-skip-permissions --output-format json "Please continue where you left off. If you were in the middle of a task, complete it." </dev/null`
+     * Parse continuation response
+     * If continuation also times out, attempt once more, then return error
 
 6. Check response for `[AWAITING_HUMAN_INPUT]`
    - If present → Return session ID to router for user input
@@ -95,20 +106,34 @@ Claude CLI also accepts full model strings: `--model claude-sonnet-4-5-20250929`
 }
 ```
 
-**If command times out**:
-1. Check the terminal output for partial JSON or session info
-2. Use `claude -c -p` to continue the most recent session in that directory
-3. Or use `claude -r "{session_id}" -p "continue"` if you have the session ID
+**CRITICAL: On timeout, automatically continue the session**
 
-**Resume a timed-out session**:
-```bash
-claude -r "{session_id}" -p --dangerously-skip-permissions "Please continue where you left off" </dev/null
-```
+If the command times out or is interrupted:
+1. **First attempt**: Try to extract `session_id` from any partial JSON output before timeout
+   - If `session_id` found → Use `claude -r "{session_id}" -p` to resume
+   - If not found → Use `claude -c -p` to continue most recent session
 
-**Continue most recent session** (same directory):
-```bash
-claude -c -p --dangerously-skip-permissions "Please continue where you left off" </dev/null
-```
+2. **Continue command** (use this when timeout detected):
+   ```bash
+   claude -c -p --dangerously-skip-permissions --output-format json \
+     "Please continue where you left off. If you were in the middle of a task, complete it." </dev/null
+   ```
+
+3. **If session ID was captured** (preferred method):
+   ```bash
+   claude -r "{session_id}" -p --dangerously-skip-permissions --output-format json \
+     "Please continue where you left off. If you were in the middle of a task, complete it." </dev/null
+   ```
+
+4. **Parse the continuation response** and return to router
+   - If it times out again, repeat the continue attempt once more
+   - After 2 timeout attempts, return error to router
+
+**Implementation flow**:
+- Store `session_id` from initial command output (even if partial)
+- On timeout/interruption: Immediately attempt `-c` continuation
+- Parse continuation response for completion or further timeout
+- Return final result or error to router
 
 ## Error Handling
 
@@ -117,9 +142,20 @@ On error, return to router for fallback:
 - Authentication error → Not logged in (`claude login` or set `ANTHROPIC_API_KEY`)
 - Model unavailable → Try fallback model
 - Permission error → Subagent hit sandbox restrictions (expected in some contexts)
-- Hanging/timeout → Missing `</dev/null` OR long-running task (try resume)
 
-**On timeout**: Don't immediately fallback. Try to resume the session first using `-c` or `-r`. The subagent may have made progress.
+**On timeout/interruption** (CRITICAL):
+1. **DO NOT immediately fallback** - the subagent may have made progress
+2. **Automatically attempt continuation**:
+   - Extract `session_id` from partial output if available
+   - Run `claude -c -p` (or `-r "{session_id}"` if available) with continuation prompt
+   - Parse continuation response
+   - If continuation succeeds → Return result to router
+   - If continuation also times out → Attempt once more, then return error to router
+3. Only return error to router after 2 failed continuation attempts
+
+**Hanging/timeout causes**:
+- Missing `</dev/null` → Always include this
+- Long-running task → Use continuation to resume
 
 Do not attempt to install or authenticate - router handles fallback.
 

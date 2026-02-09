@@ -1,0 +1,21 @@
+# Adversarial Auto-Fix Workflow Configuration
+
+# Default iteration settings
+max_iterations: 5
+auto_fix: true  # When true, review/fix loop runs automatically. When false, pauses after each review for user approval.
+
+# Model configuration for review and fix operations
+models:
+  review: "gemini-3-pro"  # Model for adversarial review validation
+  fix: "composer-1"        # Model for fix delegation
+
+# Task paths
+validation_task: "{project-root}/_bmad-custom-src/tasks/validate-adversarial-review.md"
+
+# Output paths
+report_output_folder: "{output_folder}/validation-reports"
+
+# Multi-file settings
+file_extensions:
+  target: [".md"]           # Primary files to review
+  supporting: [".yaml", ".yml", ".xml", ".json"]  # Read if referenced by target files

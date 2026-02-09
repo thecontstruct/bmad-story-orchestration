@@ -9,17 +9,17 @@ sub_workflows:
 
 # Model configuration for subagent routing
 models:
-  create_story: "opus-4.5-thinking"
-  validate_story: "gpt-5.2"
+  create_story: "opus-4.6-thinking"
+  validate_story: "composer-1"
   fix_validation: "composer-1"
-  dev_story: "opus-4.5-thinking"
+  dev_story: "opus-4.6-thinking"
   code_review: "gemini-3-pro"
   fix_review: "composer-1"
   adversarial_validate: "gemini-3-pro"
 
 # Runtime settings
 max_retries: 5
-adversarial_max_retries: 3
+adversarial_max_retries: 1
 
 # Paths (resolved from bmm config)
 config_source: "{project-root}/_bmad/bmm/config.yaml"
@@ -36,4 +36,4 @@ adversarial_validation_task: "{project-root}/_bmad-custom-src/tasks/validate-adv
 
 # Skills for explicit invocation
 skills:
-  subprocess: "{project-root}/.cursor/skills/subprocess-delegation/SKILL.md"
+  subprocess: "{project-root}/.claude/skills/subprocess-delegation/SKILL.md"

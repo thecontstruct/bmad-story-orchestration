@@ -26,7 +26,7 @@ Task(resume: "{agentId}", prompt: "Human response: {userAnswer}")
 | `composer-1` | `delegate-composer-1` |
 | `gemini-3-pro` | `delegate-gemini-3-pro` |
 | `gpt-5.2` | `delegate-gpt-5.2` |
-| `opus-4.5-thinking` | `delegate-opus-4.5-thinking` |
+| `opus-4.6-thinking` | `delegate-opus-4.6-thinking` |
 | `sonnet-4.5` | `delegate-sonnet-4.5` |
 | `sonnet-4.5-thinking` | `delegate-sonnet-4.5-thinking` |
 
@@ -49,11 +49,11 @@ On any error, return to router for fallback handling:
 
 ## Example
 
-**Router provides**: model=`opus-4.5-thinking`, prompt=normalized task
+**Router provides**: model=`opus-4.6-thinking`, prompt=normalized task
 
 **Execute**:
 ```
-Task(subagent_type: "delegate-opus-4.5-thinking", prompt: "## System Instructions
+Task(subagent_type: "delegate-opus-4.6-thinking", prompt: "## System Instructions
 
 ---
 ESCALATION PROTOCOL:

@@ -42,12 +42,12 @@ No pattern match → Not a delegation request, skip.
    - "fast" → `composer-1`
    - "review" → `gemini-3-pro`  
    - "analysis" → `gpt-5.2`
-   - "reasoning"/"planning" → `opus-4.5-thinking`
+   - "reasoning"/"planning" → `opus-4.6-thinking`
 
 2. **No model specified** → Apply heuristics to task content:
    - "code-review", "security" → `gemini-3-pro`
    - "analyze", "evaluate" → `gpt-5.2`
-   - "architecture", "implement", "debug" → `opus-4.5-thinking`
+   - "architecture", "implement", "debug" → `opus-4.6-thinking`
    - Default → `composer-1`
 
 ## Prompt Normalization
@@ -94,22 +94,26 @@ If you need human clarification:
 ```
 □ Step 1: Check if Task tool is available in current context
   - Look for "Task" in available tools list
-  - If available → Load .cursor/skills/cursor-task-tool/SKILL.md and execute
+  - If available → Load .claude/skills/cursor-task-tool/SKILL.md and execute
   - If NOT available → proceed to Step 2 (do NOT go to Step 3)
 
 □ Step 2: Execute via CLI shell command
   - This is a SHELL COMMAND, not a Cursor tool - it is ALWAYS available
+  - **CRITICAL**: Use `required_permissions: ['all']` when executing CLI commands
+    - Both `cursor-agent` and `claude` CLI need full filesystem access for:
+      - Keychain access (cursor-agent authentication)
+      - Config directory writes (`~/.claude/`, `~/.cursor/`)
   - **Determine CLI based on model type**:
     
     **If Anthropic model** (name contains "sonnet", "opus", "haiku", or "claude"):
-    - Load `.cursor/skills/claude-cli/SKILL.md`
+    - Load `.claude/skills/claude-cli/SKILL.md`
     - Pass model as-is (claude-cli handles mapping to CLI aliases)
     
     **If non-Anthropic model** (gemini, gpt, composer, or unknown):
-    - Load `.cursor/skills/cursor-agent-cli/SKILL.md`
+    - Load `.claude/skills/cursor-agent-cli/SKILL.md`
     - Pass model as-is
   
-  - Execute the CLI command per the loaded skill
+  - Execute the CLI command per the loaded skill with `required_permissions: ['all']`
   - If success → done
   - If CLI not installed → continue to Step 3
 

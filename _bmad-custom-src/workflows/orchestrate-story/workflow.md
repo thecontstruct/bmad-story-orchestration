@@ -64,7 +64,7 @@ Workflow execution state (tracked in `orchestrate-story-state.yaml`) and story d
 
 Load and read full config from `{project-root}/_bmad/bmb/config.yaml` and resolve:
 
-- `project_name`, `output_folder`, `user_name`, `communication_language`, `document_output_language`
+- `output_folder`, `user_name`, `communication_language`, `document_output_language`
 - ✅ YOU MUST ALWAYS SPEAK OUTPUT In your Agent communication style with the config `{communication_language}`
 
 Load and read config from `{project-root}/_bmad-custom-src/workflows/orchestrate-story/config.yaml` and resolve:
@@ -80,6 +80,7 @@ Load and read config from `{project-root}/_bmad-custom-src/workflows/orchestrate
 
 Also load from `{project-root}/_bmad/bmm/config.yaml`:
 
+- `project_name` — project name
 - `implementation_artifacts` — path to implementation artifacts folder (stories, sprint-status.yaml)
 
 **Load subprocess delegation skill:**
