@@ -29,10 +29,10 @@ sprint_status: "{implementation_artifacts}/sprint-status.yaml"
 workflow_state_file: "{implementation_artifacts}/orchestrate-story-state.yaml"
 
 # Tasks
-retry_task: "{project-root}/_bmad-custom-src/tasks/retry-with-feedback.md"
-validation_task: "{project-root}/_bmad-custom-src/tasks/validate-workflow.xml"
+retry_task: "{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md"
+validation_task: "{project-root}/_bmad/my-custom-bmad/tasks/validate-workflow.xml"
 adversarial_review_task: "{project-root}/_bmad/core/tasks/review-adversarial-general.xml"
-adversarial_validation_task: "{project-root}/_bmad-custom-src/tasks/validate-adversarial-review.md"
+adversarial_validation_task: "{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md"
 
 # Skills for explicit invocation
 skills:

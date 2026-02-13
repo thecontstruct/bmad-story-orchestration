@@ -6,16 +6,15 @@ A standalone repository containing BMAD workflow orchestration systems and all t
 
 ```
 bmad-story-orchestration/
-├── _bmad-custom-src/              # Core BMAD custom content
-│   ├── custom.yaml                # BMAD module configuration
-│   ├── tasks/                     # Custom tasks
-│   │   ├── retry-with-feedback.md
-│   │   ├── validate-adversarial-review.md
-│   │   └── validate-workflow.xml
-│   └── workflows/
-│       ├── orchestrate-story/     # Story lifecycle orchestration
-│       ├── orchestrate-planning-documents/  # PRD/Architecture/Epic orchestration
-│       └── adversarial-auto-fix/  # Automated adversarial review with auto-fix
+├── module.yaml                    # BMAD module configuration (required for install)
+├── tasks/                         # Custom tasks
+│   ├── retry-with-feedback.md
+│   ├── validate-adversarial-review.md
+│   └── validate-workflow.xml
+├── workflows/
+│   ├── orchestrate-story/         # Story lifecycle orchestration
+│   ├── orchestrate-planning-documents/  # PRD/Architecture/Epic orchestration
+│   └── adversarial-auto-fix/      # Automated adversarial review with auto-fix
 ├── .claude/
 │   ├── agents/                    # Delegation agents
 │   │   ├── delegate-composer-1.md
@@ -36,9 +35,9 @@ bmad-story-orchestration/
 
 ## What's Included
 
-### Core Content (`_bmad-custom-src/`)
+### Core Content (root)
 
-- **custom.yaml**: BMAD module configuration defining workflows and tasks
+- **module.yaml**: BMAD module configuration defining workflows and tasks
 - **tasks/**: Custom tasks for retry logic, validation, and adversarial review
 - **workflows/**: Three complete orchestration workflows:
   1. **orchestrate-story/**: Complete story lifecycle automation
@@ -60,7 +59,7 @@ Complete story lifecycle orchestration:
 - Commit and merge operations
 - Summary and next story identification
 
-**See**: `_bmad-custom-src/workflows/orchestrate-story/README.md` for detailed documentation
+**See**: `workflows/orchestrate-story/README.md` for detailed documentation
 
 ### Workflow 2: Orchestrate Planning Documents
 
@@ -73,7 +72,7 @@ PRD, Architecture, and Epic document creation workflow:
 - Commit and merge operations
 - Summary and tracking updates
 
-**See**: `_bmad-custom-src/workflows/orchestrate-planning-documents/README.md` for detailed documentation
+**See**: `workflows/orchestrate-planning-documents/README.md` for detailed documentation
 
 ### Workflow 3: Adversarial Auto-Fix
 
@@ -85,7 +84,7 @@ Automated adversarial review with severity-aware fixing:
 - Comprehensive validation reports
 - Continuation support for interrupted sessions
 
-**See**: `_bmad-custom-src/workflows/adversarial-auto-fix/README.md` for detailed documentation
+**See**: `workflows/adversarial-auto-fix/README.md` for detailed documentation
 
 ### Claude Skills (`.claude/skills/`)
 
@@ -150,7 +149,7 @@ The workflows expect:
 
 ### Setup
 
-1. Clone this repository into your project workspace
+1. During BMAD install (`npx bmad-method install`), add this as a custom module: path to this repo root (must contain `module.yaml`)
 2. Ensure you have BMAD installed with the BMM and BMB modules
 3. Configure paths in workflow `config.yaml` files if needed
 4. Ensure your project has the required BMAD modules installed
@@ -163,7 +162,7 @@ The workflows expect:
 ```
 or
 ```
-@_bmad-custom-src/workflows/orchestrate-story/workflow.md
+@_bmad/my-custom-bmad/workflows/orchestrate-story/workflow.md
 ```
 
 **Orchestrate Planning Documents:**
@@ -172,7 +171,7 @@ or
 ```
 or
 ```
-@_bmad-custom-src/workflows/orchestrate-planning-documents/workflow.md
+@_bmad/my-custom-bmad/workflows/orchestrate-planning-documents/workflow.md
 ```
 
 **Adversarial Auto-Fix:**
@@ -181,7 +180,7 @@ or
 ```
 or
 ```
-@_bmad-custom-src/workflows/adversarial-auto-fix/workflow.md
+@_bmad/my-custom-bmad/workflows/adversarial-auto-fix/workflow.md
 ```
 
 ## Workflow Details

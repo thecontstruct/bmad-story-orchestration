@@ -75,8 +75,10 @@ flowchart TD
 
 ## File Structure
 
+When installed, content lives under `_bmad/my-custom-bmad/`:
+
 ```
-_bmad-custom-src/
+_bmad/my-custom-bmad/
 ├── tasks/
 │   └── retry-with-feedback.md      # Shared retry task
 └── workflows/

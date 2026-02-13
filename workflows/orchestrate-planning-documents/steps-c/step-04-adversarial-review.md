@@ -7,7 +7,7 @@ nextStepFile: './step-05-human-checkpoint.md'
 configFile: '../config.yaml'
 
 # Task References
-retryWithFeedbackTask: '{project-root}/_bmad-custom-src/tasks/retry-with-feedback.md'
+retryWithFeedbackTask: '{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md'
 ---
 
 # Step 4: Adversarial Review
@@ -82,7 +82,7 @@ Initializing retry task...
 ### 3. Configure Retry Context
 
 Load config file `{{configFile}}` and extract:
-- `adversarial_validation_task` path (default: `{project-root}/_bmad-custom-src/tasks/validate-adversarial-review.md`)
+- `adversarial_validation_task` path (default: `{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md`)
 - `adversarial_max_retries` (defaults to 1 if not set)
 - `models.adversarial_validate` (default: "gemini-3-pro")
 
@@ -108,7 +108,7 @@ Set `also_consider` based on `document_type`:
 
 **Note:** 
 - Replace `[doc_type]` with actual document type (prd, architecture, epic) when executing
-- `adversarial_validation_task` is loaded from `config.yaml` and points to `{project-root}/_bmad-custom-src/tasks/validate-adversarial-review.md`
+- `adversarial_validation_task` is loaded from `config.yaml` and points to `{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md`
 - `adversarial_max_retries` is separate from other retry settings
 - `models.validate` is set to `models.adversarial_validate` for adversarial review delegation
 

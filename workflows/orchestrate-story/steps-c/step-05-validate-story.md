@@ -7,7 +7,7 @@ nextStepFile: './step-06-develop-story.md'
 configFile: '../config.yaml'
 
 # Task References
-retryWithFeedbackTask: '{project-root}/_bmad-custom-src/tasks/retry-with-feedback.md'
+retryWithFeedbackTask: '{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md'
 ---
 
 # Step 3: Validate Story

@@ -25,7 +25,7 @@ Invoke the adversarial-auto-fix workflow to perform automated quality review and
 **Examples:**
 ```
 /adversarial-auto-fix docs/
-/adversarial-auto-fix _bmad-custom-src/workflows/adversarial-auto-fix/
+/adversarial-auto-fix _bmad/my-custom-bmad/workflows/adversarial-auto-fix/
 /adversarial-auto-fix docs/api-spec.md docs/architecture.md docs/deployment.md
 /adversarial-auto-fix src/workflows/my-workflow/ --guidance "Focus on cross-file consistency"
 /adversarial-auto-fix file1.md file2.md --guidance docs/review-guidelines.md
@@ -38,7 +38,7 @@ Invoke the adversarial-auto-fix workflow to perform automated quality review and
 
 ## How It Works
 
-1. **Loads the workflow** from `_bmad-custom-src/workflows/adversarial-auto-fix/workflow.md`
+1. **Loads the workflow** from `_bmad/my-custom-bmad/workflows/adversarial-auto-fix/workflow.md`
 2. **Passes parameters** as context variables (the agent retains these values in its reasoning context and uses them as overrides when the workflow's step files reference matching configuration keys):
    - `input_paths`: The file paths or folder path to review
    - `review_guidance`: Optional guidance (text or document content)
@@ -120,10 +120,10 @@ When invoked:
 
 4. **Verify dependencies and load workflow file:**
    - Verify `_bmad/bmb/config.yaml` exists (halt with error if missing)
-   - Verify `_bmad-custom-src/workflows/adversarial-auto-fix/config.yaml` exists (halt with error if missing)
+   - Verify `_bmad/my-custom-bmad/workflows/adversarial-auto-fix/config.yaml` exists (halt with error if missing)
    - Load workflow from:
    ```
-   {project-root}/_bmad-custom-src/workflows/adversarial-auto-fix/workflow.md
+   {project-root}/_bmad/my-custom-bmad/workflows/adversarial-auto-fix/workflow.md
    ```
    - Verify workflow.md exists at the expected path. If not found, present error and halt.
 
@@ -189,7 +189,7 @@ All error conditions halt execution and present a clear message. The workflow pr
 
 The workflow uses configuration from:
 - `_bmad/bmb/config.yaml` (BMB module config — required)
-- `_bmad-custom-src/workflows/adversarial-auto-fix/config.yaml` (workflow config — required)
+- `_bmad/my-custom-bmad/workflows/adversarial-auto-fix/config.yaml` (workflow config — required)
 
 **Default settings** (source of truth: `config.yaml`):
 - `max_iterations`: 5

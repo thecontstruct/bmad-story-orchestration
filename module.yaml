@@ -7,6 +7,12 @@ workflows:
   - name: orchestrate-story
     path: workflows/orchestrate-story
     description: "Execute complete BMAD story workflow: create → develop → review → merge"
+  - name: orchestrate-planning-documents
+    path: workflows/orchestrate-planning-documents
+    description: "PRD, Architecture, Epic document creation workflow"
+  - name: adversarial-auto-fix
+    path: workflows/adversarial-auto-fix
+    description: "Automated adversarial review with severity-aware auto-fix"
 
 # Custom tasks
 tasks:
@@ -16,3 +22,6 @@ tasks:
   - name: validate-workflow
     path: tasks/validate-workflow.xml
     description: "Run a checklist against a document with thorough analysis and produce a validation report"
+  - name: validate-adversarial-review
+    path: tasks/validate-adversarial-review.md
+    description: "Adversarial validation task"
