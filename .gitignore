@@ -32,3 +32,10 @@ build/
 tmp/
 temp/
 *.tmp
+
+# BMAD output (generated at runtime)
+_bmad-output/
+
+# Project-specific (do not ship with module)
+*.code-workspace
+bmad-story-orchestration.code-workspace

@@ -1,0 +1,39 @@
+# Orchestrate Planning Documents Workflow Configuration
+# Custom workflow for complete planning document lifecycle automation
+
+# Sub-workflows (from installed bmad modules)
+sub_workflows:
+  create_prd: "{project-root}/_bmad/bmm/workflows/2-plan-workflows/create-prd"
+  create_architecture: "{project-root}/_bmad/bmm/workflows/3-solutioning/create-architecture"
+  create_epic: "{project-root}/_bmad/bmm/workflows/3-solutioning/create-epics-and-stories"
+
+# Model configuration for subagent routing
+models:
+  create_prd: "opus-4.6-thinking"
+  create_architecture: "opus-4.6-thinking"
+  create_epic: "opus-4.6-thinking"
+  adversarial_validate: "gemini-3-pro"
+  fix_validation: "composer-1"
+
+# Runtime settings
+adversarial_max_retries: 1
+
+# Paths (resolved from bmm config)
+config_source: "{project-root}/_bmad/bmm/config.yaml"
+planning_artifacts: "{config_source}:planning_artifacts"
+workflow_state_file: "{planning_artifacts}/orchestrate-planning-documents-state.yaml"
+
+# Tracking files (document-type-specific)
+tracking_files:
+  prd: "{planning_artifacts}/orchestrate-prd-state.yaml"
+  architecture: "{planning_artifacts}/orchestrate-architecture-state.yaml"
+  epic: "{planning_artifacts}/orchestrate-epic-state.yaml"
+
+# Tasks
+retry_task: "{project-root}/_bmad/orchestrate/tasks/retry-with-feedback.md"
+adversarial_validation_task: "{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md"
+
+# Skills for explicit invocation (module-bundled; override in project config if needed)
+skills:
+  subprocess: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"
+  subprocess_claude: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"

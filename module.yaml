@@ -1,0 +1,27 @@
+code: orchestrate
+name: "BMAD Story Orchestration: Custom Agents, Workflows, and Tasks"
+default_selected: true
+
+# Custom workflows
+workflows:
+  - name: story
+    path: workflows/orchestrate-story
+    description: "Execute complete BMAD story workflow: create → develop → review → merge"
+  - name: planning-documents
+    path: workflows/orchestrate-planning-documents
+    description: "PRD, Architecture, Epic document creation workflow"
+  - name: adversarial-auto-fix
+    path: workflows/adversarial-auto-fix
+    description: "Automated adversarial review with severity-aware auto-fix"
+
+# Custom tasks
+tasks:
+  - name: retry-with-feedback
+    path: tasks/retry-with-feedback.md
+    description: "Execute action with validation and automatic retry on failure"
+  - name: validate-workflow
+    path: tasks/validate-workflow.xml
+    description: "Run a checklist against a document with thorough analysis and produce a validation report"
+  - name: validate-adversarial-review
+    path: tasks/validate-adversarial-review.md
+    description: "Adversarial validation task"

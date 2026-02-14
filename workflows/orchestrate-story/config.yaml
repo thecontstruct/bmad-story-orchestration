@@ -1,0 +1,40 @@
+# Orchestrate Story Workflow Configuration
+# Custom workflow for complete story lifecycle automation
+
+# Sub-workflows (from installed bmad modules)
+sub_workflows:
+  create_story: "{project-root}/_bmad/bmm/workflows/4-implementation/create-story"
+  dev_story: "{project-root}/_bmad/bmm/workflows/4-implementation/dev-story"
+  code_review: "{project-root}/_bmad/bmm/workflows/4-implementation/code-review"
+
+# Model configuration for subagent routing
+models:
+  create_story: "opus-4.6-thinking"
+  validate_story: "composer-1"
+  fix_validation: "composer-1"
+  dev_story: "opus-4.6-thinking"
+  code_review: "gemini-3-pro"
+  fix_review: "composer-1"
+  adversarial_validate: "gemini-3-pro"
+
+# Runtime settings
+max_retries: 5
+adversarial_max_retries: 1
+
+# Paths (resolved from bmm config)
+config_source: "{project-root}/_bmad/bmm/config.yaml"
+implementation_artifacts: "{config_source}:implementation_artifacts"
+story_dir: "{implementation_artifacts}/stories"
+sprint_status: "{implementation_artifacts}/sprint-status.yaml"
+workflow_state_file: "{implementation_artifacts}/orchestrate-story-state.yaml"
+
+# Tasks
+retry_task: "{project-root}/_bmad/orchestrate/tasks/retry-with-feedback.md"
+validation_task: "{project-root}/_bmad/orchestrate/tasks/validate-workflow.xml"
+adversarial_review_task: "{project-root}/_bmad/core/tasks/review-adversarial-general.xml"
+adversarial_validation_task: "{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md"
+
+# Skills for explicit invocation (module-bundled; override in project config if needed)
+skills:
+  subprocess: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"
+  subprocess_claude: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"
