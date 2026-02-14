@@ -85,15 +85,15 @@ flowchart TD
 
 ## File Structure
 
-When installed, content lives under `_bmad/my-custom-bmad/`:
+When installed, content lives under `_bmad/orchestrate/`:
 
 ```
-_bmad/my-custom-bmad/
+_bmad/orchestrate/
 ├── tasks/
 │   └── retry-with-feedback.md      # Shared retry task
 └── workflows/
     └── orchestrate-story/
-        ├── config.yaml             # Sub-workflow refs, models, settings
+        ├── (config in _config/custom — see below)
         ├── workflow.md             # Entry point
         ├── steps-c/
         │   ├── step-01-init.md                    # Story ID + branch + routing
@@ -160,7 +160,7 @@ On exit at any point:
 
 ## Configuration
 
-Edit `config.yaml` to customize:
+Config lives at `_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml` (BMAD canonical location). Edit that file to customize:
 
 - **sub_workflows**: Paths to create-story, dev-story, code-review
 - **models**: Model selection for each subagent routing

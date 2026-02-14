@@ -3,7 +3,7 @@ name: 'step-11-summary'
 description: 'Display final workflow summary and identify next story'
 
 # File References
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 ---
 
 # Step 8: Summary

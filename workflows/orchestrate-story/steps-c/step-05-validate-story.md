@@ -4,10 +4,10 @@ description: 'Validate story file using retry-with-feedback task'
 
 # File References
 nextStepFile: './step-06-develop-story.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 
 # Task References
-retryWithFeedbackTask: '{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md'
+retryWithFeedbackTask: '{project-root}/_bmad/orchestrate/tasks/retry-with-feedback.md'
 ---
 
 # Step 3: Validate Story

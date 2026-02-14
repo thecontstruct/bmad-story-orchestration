@@ -3,7 +3,7 @@ name: 'step-01-init'
 description: 'Story identification, branch setup, continuation detection, and state-based routing'
 
 # File References
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 continueStepFile: './step-02-continue.md'
 routingTable: '../data/routing-table.md'
 workflowStateStructure: '../data/workflow-state-structure.md'

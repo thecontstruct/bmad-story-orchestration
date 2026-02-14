@@ -3,7 +3,7 @@ name: 'step-01b-continue'
 description: 'Handle workflow continuation from previous session'
 
 # File References
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml'
 ---
 
 # Step 1b: Workflow Continuation

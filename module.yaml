@@ -1,13 +1,13 @@
-code: my-custom-bmad
-name: "Axonify Dev-Custom-BMad: Custom Agents, Workflows, and Tasks"
+code: orchestrate
+name: "BMAD Story Orchestration: Custom Agents, Workflows, and Tasks"
 default_selected: true
 
 # Custom workflows
 workflows:
-  - name: orchestrate-story
+  - name: story
     path: workflows/orchestrate-story
     description: "Execute complete BMAD story workflow: create → develop → review → merge"
-  - name: orchestrate-planning-documents
+  - name: planning-documents
     path: workflows/orchestrate-planning-documents
     description: "PRD, Architecture, Epic document creation workflow"
   - name: adversarial-auto-fix

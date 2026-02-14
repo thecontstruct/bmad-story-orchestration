@@ -6,7 +6,7 @@ description: 'Initialize adversarial auto-fix workflow by resolving file set, de
 nextStepFile: './step-02-review.md'
 templateFile: '../templates/report-template.md'
 continueFile: './step-01b-continue.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml'
 fileResolutionData: '../data/file-resolution.md'
 ---
 

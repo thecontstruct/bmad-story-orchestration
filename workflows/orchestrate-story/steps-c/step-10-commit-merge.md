@@ -4,7 +4,7 @@ description: 'Execute git commit and merge operations'
 
 # File References
 nextStepFile: './step-11-summary.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 ---
 
 # Step 7: Commit & Merge

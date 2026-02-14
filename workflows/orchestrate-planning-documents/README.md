@@ -75,15 +75,15 @@ flowchart TD
 
 ## File Structure
 
-When installed, content lives under `_bmad/my-custom-bmad/`:
+When installed, content lives under `_bmad/orchestrate/`:
 
 ```
-_bmad/my-custom-bmad/
+_bmad/orchestrate/
 ├── tasks/
 │   └── retry-with-feedback.md      # Shared retry task
 └── workflows/
     └── orchestrate-planning-documents/
-        ├── config.yaml             # Sub-workflow refs, models, settings
+        ├── (config in _config/custom — see Configuration)
         ├── workflow.md             # Entry point
         ├── steps-c/
         │   ├── step-01-init.md                    # Document type + branch + routing
@@ -169,7 +169,7 @@ On exit at any point:
 
 ## Configuration
 
-Edit `config.yaml` to customize:
+Config lives at `_bmad/_config/custom/orchestrate/workflows/orchestrate-planning-documents/config.yaml` (BMAD canonical location). Edit that file to customize:
 
 - **sub_workflows**: Paths to create-prd, create-architecture, create-epic
 - **models**: Model selection for each subagent routing
@@ -202,7 +202,7 @@ The workflow will:
 
 1. Load `workflow.md` from the workflow directory
 2. Follow the initialization sequence:
-   - Load config from `config.yaml`
+   - Load config from `_bmad/_config/custom/orchestrate/workflows/orchestrate-planning-documents/config.yaml`
    - Load bmb config for output_folder, user_name, communication_language
    - Load bmm config for planning_artifacts
    - Execute `steps-c/step-01-init.md` to begin

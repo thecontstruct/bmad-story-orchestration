@@ -4,11 +4,11 @@ description: 'Execute code review with retry-with-feedback task'
 
 # File References
 nextStepFile: './step-09-human-checkpoint.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 delegationBlocks: '../data/delegation-blocks.md'
 
 # Task References
-retryWithFeedbackTask: '{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md'
+retryWithFeedbackTask: '{project-root}/_bmad/orchestrate/tasks/retry-with-feedback.md'
 ---
 
 # Step 5: Review Story

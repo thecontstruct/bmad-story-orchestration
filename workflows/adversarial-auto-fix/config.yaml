@@ -10,7 +10,12 @@ models:
   fix: "composer-1"        # Model for fix delegation
 
 # Task paths
-validation_task: "{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md"
+validation_task: "{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md"
+
+# Skills (module-bundled; override in project config if needed)
+skills:
+  subprocess: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"
+  subprocess_claude: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"
 
 # Output paths
 report_output_folder: "{output_folder}/validation-reports"

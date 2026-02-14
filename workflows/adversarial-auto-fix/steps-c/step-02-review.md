@@ -6,14 +6,13 @@ description: 'Execute two-phase adversarial review, aggregate findings, and rout
 nextStepFileFix: './step-02b-fix.md'
 nextStepFileHumanCheckpoint: './step-03-human-checkpoint.md'
 nextStepFileComplete: './step-04-complete.md'
-configFile: '../config.yaml'
-validationTask: '{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml'
+validationTask: '{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md'
 delegationTemplatesFile: '../data/delegation-templates.md'
 exitConditionsFile: '../data/exit-conditions.md'
 aggregationRulesFile: '../data/aggregation-rules.md'
 
-# Task References
-subprocessDelegationSkill: '{project-root}/.claude/skills/subprocess-delegation/SKILL.md'
+# Task References (from config - use skills.subprocess for Cursor, skills.subprocess_claude for Claude)
 ---
 
 # Step 2: Review
@@ -82,7 +81,7 @@ Set state variables:
 
 ### 2. Phase 1: Per-File Reviews
 
-**Load subprocess delegation skill:** `{subprocessDelegationSkill}`
+**Load subprocess delegation skill:** From config `{configFile}` use `skills.subprocess` (Cursor) or `skills.subprocess_claude` (Claude) — read whichever path exists for your IDE.
 **Load delegation templates:** `{delegationTemplatesFile}`
 
 For each file in `file_paths`:

@@ -119,7 +119,7 @@ When invoked:
    - **File list mode**: Workflow validates each file exists
 
 4. **Verify dependencies and load workflow file:**
-   - Verify `_bmad/bmb/config.yaml` exists (halt with error if missing)
+   - Verify `_bmad/core/config.yaml` exists (halt with error if missing)
    - Verify `_bmad/my-custom-bmad/workflows/adversarial-auto-fix/config.yaml` exists (halt with error if missing)
    - Load workflow from:
    ```
@@ -188,7 +188,7 @@ All error conditions halt execution and present a clear message. The workflow pr
 ## Workflow Configuration
 
 The workflow uses configuration from:
-- `_bmad/bmb/config.yaml` (BMB module config — required)
+- `_bmad/core/config.yaml` (Core config — required)
 - `_bmad/my-custom-bmad/workflows/adversarial-auto-fix/config.yaml` (workflow config — required)
 
 **Default settings** (source of truth: `config.yaml`):

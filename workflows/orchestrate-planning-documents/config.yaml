@@ -30,9 +30,10 @@ tracking_files:
   epic: "{planning_artifacts}/orchestrate-epic-state.yaml"
 
 # Tasks
-retry_task: "{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md"
-adversarial_validation_task: "{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md"
+retry_task: "{project-root}/_bmad/orchestrate/tasks/retry-with-feedback.md"
+adversarial_validation_task: "{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md"
 
-# Skills for explicit invocation
+# Skills for explicit invocation (module-bundled; override in project config if needed)
 skills:
-  subprocess: "{project-root}/.claude/skills/subprocess-delegation/SKILL.md"
+  subprocess: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"
+  subprocess_claude: "{project-root}/_bmad/orchestrate/.claude/skills/subprocess-delegation/SKILL.md"

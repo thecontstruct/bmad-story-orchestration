@@ -45,13 +45,13 @@ web_bundle: true
 
 ### 1. Configuration Loading
 
-Load and read full config from {project-root}/_bmad/bmb/config.yaml and resolve:
+Load and read full config from {project-root}/_bmad/core/config.yaml and resolve:
 
 - `project_name`, `output_folder`, `user_name`, `communication_language`, `document_output_language`, `bmb_creations_output_folder`
 
 ### 2. Workflow Configuration Loading
 
-Load and read workflow config from `./config.yaml` and resolve:
+Load and read workflow config from `{project-root}/_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml` (BMAD canonical location; fallback: `./config.yaml`) and resolve:
 
 - `max_iterations` (default: 5)
 - `models.review` (default: gemini-3-pro)

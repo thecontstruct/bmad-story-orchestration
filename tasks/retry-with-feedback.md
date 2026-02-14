@@ -250,7 +250,7 @@ The calling step should set context variables before invoking this task:
 ### 1. Configure Retry Context
 
 action_workflow = {{sub_workflows.create_story}}
-validation_task = {project-root}/_bmad/my-custom-bmad/tasks/validate-workflow.xml
+validation_task = {project-root}/_bmad/orchestrate/tasks/validate-workflow.xml
 validation_checklist = {{sub_workflows.create_story}}/checklist.md
 target_document = {{story_file}}
 fix_model = {{models.fix_validation}}

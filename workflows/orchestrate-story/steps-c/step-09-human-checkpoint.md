@@ -4,7 +4,7 @@ description: 'Human review checkpoint before commit operations'
 
 # File References
 nextStepFile: './step-10-commit-merge.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 ---
 
 # Step 6: Human Checkpoint

@@ -1,5 +1,5 @@
 ---
-name: orchestrate-planning-documents
+name: planning-documents
 description: "Execute complete BMAD planning document workflow: create → review → merge with automated adversarial review validation and human review checkpoint"
 web_bundle: false
 standalone: true
@@ -62,12 +62,12 @@ Workflow execution state (tracked in workflow state file) and document domain st
 
 ### 1. Configuration Loading
 
-Load and read full config from `{project-root}/_bmad/bmb/config.yaml` and resolve:
+Load and read full config from `{project-root}/_bmad/core/config.yaml` and resolve:
 
 - `output_folder`, `user_name`, `communication_language`, `document_output_language`
 - ✅ YOU MUST ALWAYS SPEAK OUTPUT In your Agent communication style with the config `{communication_language}`
 
-Load and read config from `{project-root}/_bmad/my-custom-bmad/workflows/orchestrate-planning-documents/config.yaml` and resolve:
+Load and read config from `{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-planning-documents/config.yaml` (BMAD canonical location; fallback: `_bmad/orchestrate/workflows/orchestrate-planning-documents/config.yaml`) and resolve:
 
 - `sub_workflows.*` — paths to create-PRD, create-Architecture, create-Epic workflows
 - `models.*` — model configuration for delegation blocks

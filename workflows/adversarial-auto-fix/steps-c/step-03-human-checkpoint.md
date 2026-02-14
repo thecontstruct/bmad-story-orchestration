@@ -5,7 +5,7 @@ description: 'Present options when high issues remain or max iterations reached'
 # File References
 nextStepFileContinue: './step-02-review.md'
 nextStepFileComplete: './step-04-complete.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml'
 checkpointMenusFile: '../data/checkpoint-menus.md'
 ---
 

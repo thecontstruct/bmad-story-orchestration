@@ -1,5 +1,5 @@
 ---
-name: orchestrate-story
+name: story
 description: "Execute complete BMAD story workflow: create → develop → review → merge with automated validation and human review checkpoint"
 web_bundle: false
 standalone: true
@@ -62,12 +62,12 @@ Workflow execution state (tracked in `orchestrate-story-state.yaml`) and story d
 
 ### 1. Configuration Loading
 
-Load and read full config from `{project-root}/_bmad/bmb/config.yaml` and resolve:
+Load and read full config from `{project-root}/_bmad/core/config.yaml` and resolve:
 
 - `output_folder`, `user_name`, `communication_language`, `document_output_language`
 - ✅ YOU MUST ALWAYS SPEAK OUTPUT In your Agent communication style with the config `{communication_language}`
 
-Load and read config from `{project-root}/_bmad/my-custom-bmad/workflows/orchestrate-story/config.yaml` and resolve:
+Load and read config from `{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml` (BMAD canonical location; fallback: `_bmad/orchestrate/workflows/orchestrate-story/config.yaml`) and resolve:
 
 - `sub_workflows.*` — paths to create-story, dev-story, code-review workflows
 - `models.*` — model configuration for delegation blocks

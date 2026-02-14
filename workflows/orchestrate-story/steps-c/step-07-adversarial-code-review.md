@@ -4,10 +4,10 @@ description: 'Adversarial review of code diff using retry-with-feedback task'
 
 # File References
 nextStepFile: './step-08-review-story.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 
 # Task References
-retryWithFeedbackTask: '{project-root}/_bmad/my-custom-bmad/tasks/retry-with-feedback.md'
+retryWithFeedbackTask: '{project-root}/_bmad/orchestrate/tasks/retry-with-feedback.md'
 ---
 
 # Step 4b: Adversarial Code Review
@@ -124,12 +124,12 @@ models.validate = {{models.adversarial_validate}}
 ```
 
 **Note:** 
-- `adversarial_validation_task` is loaded from `config.yaml` and points to `{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md`
+- `adversarial_validation_task` is loaded from `config.yaml` and points to `{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md`
 - `adversarial_max_retries` is separate from the main `max_retries` setting
 - `models.validate` is set to `models.adversarial_validate` (gemini-3-pro) for adversarial review delegation
 
 **Note:** 
-- `adversarial_validation_task` is loaded from `config.yaml` and points to `{project-root}/_bmad/my-custom-bmad/tasks/validate-adversarial-review.md`
+- `adversarial_validation_task` is loaded from `config.yaml` and points to `{project-root}/_bmad/orchestrate/tasks/validate-adversarial-review.md`
 - `adversarial_max_retries` is separate from the main `max_retries` setting
 - `models.validate` is set to `models.adversarial_validate`
 

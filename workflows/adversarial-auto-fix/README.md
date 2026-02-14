@@ -79,7 +79,7 @@ Default: 5 iterations. Stored as an array of extension amounts (e.g., `[5, 5, 3]
 ```
 adversarial-auto-fix/
 ├── workflow.md                  # Entry point
-├── config.yaml                  # Default settings
+├── (config in _bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/)
 ├── README.md                    # This file
 ├── steps-c/
 │   ├── step-01-init.md          # Resolve file set, create report
@@ -100,7 +100,7 @@ adversarial-auto-fix/
 
 ## Configuration
 
-Defined in `config.yaml`:
+Defined in `_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml`:
 
 | Setting | Default | Description |
 |---------|---------|-------------|

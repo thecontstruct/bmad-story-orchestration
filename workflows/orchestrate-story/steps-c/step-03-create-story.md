@@ -4,7 +4,7 @@ description: 'Invoke create-story sub-workflow to generate story file'
 
 # File References
 nextStepFile: './step-04-adversarial-story-review.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 ---
 
 # Step 2: Create Story

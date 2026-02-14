@@ -4,12 +4,11 @@ description: 'Delegate context-aware fixes for per-file and cross-file issues, t
 
 # File References
 nextStepFileReview: './step-02-review.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/adversarial-auto-fix/config.yaml'
 delegationTemplatesFile: '../data/delegation-templates.md'
 aggregationRulesFile: '../data/aggregation-rules.md'
 
-# Task References
-subprocessDelegationSkill: '{project-root}/.claude/skills/subprocess-delegation/SKILL.md'
+# Task References (from config - use skills.subprocess for Cursor, skills.subprocess_claude for Claude)
 ---
 
 # Step 2b: Fix Delegation
@@ -83,7 +82,7 @@ From the review results (carried in context from step-02-review):
 
 ### 3. Delegate Single-File Fixes
 
-**Load subprocess delegation skill:** `{subprocessDelegationSkill}`
+**Load subprocess delegation skill:** From config `{configFile}` use `skills.subprocess` (Cursor) or `skills.subprocess_claude` (Claude) — read whichever path exists for your IDE.
 **Load delegation templates:** `{delegationTemplatesFile}`
 
 Follow fix routing rules from `{aggregationRulesFile}`:

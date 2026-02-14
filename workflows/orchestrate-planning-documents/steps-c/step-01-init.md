@@ -3,7 +3,7 @@ name: 'step-01-init'
 description: 'Document type selection, branch setup, continuation detection, and state-based routing'
 
 # File References
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-planning-documents/config.yaml'
 continueStepFile: './step-02-continue.md'
 routingTable: '../data/routing-table.md'
 workflowStateStructure: '../data/workflow-state-structure.md'
@@ -65,7 +65,7 @@ Load `{project-root}/_bmad/bmm/config.yaml` to resolve:
 - `user_name`
 - `project_name`
 
-Load `{project-root}/_bmad/bmb/config.yaml` to resolve:
+Load `{project-root}/_bmad/core/config.yaml` to resolve:
 - `user_name`
 - `communication_language`
 

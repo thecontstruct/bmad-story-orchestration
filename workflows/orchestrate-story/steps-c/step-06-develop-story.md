@@ -4,7 +4,7 @@ description: 'Invoke dev-story sub-workflow to implement the story'
 
 # File References
 nextStepFile: './step-07-adversarial-code-review.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 ---
 
 # Step 4: Develop Story

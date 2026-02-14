@@ -8,30 +8,13 @@ A standalone repository containing BMAD workflow orchestration systems and all t
 bmad-story-orchestration/
 ├── module.yaml                    # BMAD module configuration (required for install)
 ├── tasks/                         # Custom tasks
-│   ├── retry-with-feedback.md
-│   ├── validate-adversarial-review.md
-│   └── validate-workflow.xml
-├── workflows/
-│   ├── orchestrate-story/         # Story lifecycle orchestration
-│   ├── orchestrate-planning-documents/  # PRD/Architecture/Epic orchestration
-│   └── adversarial-auto-fix/      # Automated adversarial review with auto-fix
-├── .claude/
-│   ├── agents/                    # Delegation agents
-│   │   ├── delegate-composer-1.md
-│   │   ├── delegate-opus-4.6-thinking.md
-│   │   ├── delegate-gemini-3-pro.md
-│   │   └── delegate-gpt-5.2.md
-│   ├── commands/                  # Claude commands
-│   │   ├── orchestrate-bmad-story.md
-│   │   └── orchestrate-bmad-planning-documents.md
-│   └── skills/                    # Skills for subprocess delegation
-│       ├── subprocess-delegation/
-│       ├── claude-cli/
-│       ├── cursor-agent-cli/
-│       ├── cursor-task-tool/
-│       └── adversarial-auto-fix/
-└── LICENSE                         # MIT License
+├── workflows/                     # Custom workflows
+├── .claude/agents/                # Delegate definitions (Claude + subprocess)
+├── .claude/skills/                # Subprocess delegation skill (module-bundled)
+└── LICENSE
 ```
+
+Note: BMAD generates commands and installs skills at project root (`.cursor/commands/bmad`, `.claude/commands/bmad`, etc.) from manifests — do not include these in the module.
 
 ## What's Included
 
@@ -86,29 +69,18 @@ Automated adversarial review with severity-aware fixing:
 
 **See**: `workflows/adversarial-auto-fix/README.md` for detailed documentation
 
-### Claude Skills (`.claude/skills/`)
+### Delegate Definitions (`.claude/agents/`)
 
-Skills for subprocess delegation and agent routing:
+Delegate definitions for subprocess delegation and Claude Code slash commands:
 
-- **subprocess-delegation/**: Router skill that detects delegation patterns and routes to appropriate execution tool
-- **claude-cli/**: Skill for executing via Anthropic's Claude CLI with session recovery
-- **cursor-agent-cli/**: Skill for executing via Cursor Agent CLI with continuation support
-- **cursor-task-tool/**: Skill for executing via Cursor's native Task tool
-- **adversarial-auto-fix/**: Skill for invoking the adversarial-auto-fix workflow
+- **delegate-composer-1.md**: Fast execution for simple/repetitive tasks
+- **delegate-opus-4.6-thinking.md**: Architecture, planning, complex implementation
+- **delegate-gemini-3-pro.md**: Code review
+- **delegate-gpt-5.2.md**: Analysis and evaluation
 
-### Claude Agents (`.claude/agents/`)
+### Commands and Skills
 
-Agent definitions for delegated execution:
-
-- **delegate-composer-1.md**: Fast execution agent for simple/repetitive tasks
-- **delegate-opus-4.6-thinking.md**: Architecture, planning, complex implementation agent
-- **delegate-gemini-3-pro.md**: Code review agent
-- **delegate-gpt-5.2.md**: Analysis and evaluation agent
-
-### Claude Commands (`.claude/commands/`)
-
-- **orchestrate-bmad-story.md**: Command that invokes the orchestrate-story workflow
-- **orchestrate-bmad-planning-documents.md**: Command that invokes the orchestrate-planning-documents workflow
+BMAD generates workflow commands at project root. Skills are **module-bundled** at `_bmad/orchestrate/.claude/skills/` — workflows load from there by default. Override in workflow config if using project-level skills.
 
 ## External Dependencies
 
@@ -129,11 +101,11 @@ The workflows reference these paths (which must exist in your project):
 - `{project-root}/_bmad/bmb/workflows/create-prd` - PRD creation sub-workflow
 - `{project-root}/_bmad/bmb/workflows/create-architecture` - Architecture creation sub-workflow
 - `{project-root}/_bmad/bmb/workflows/create-epic` - Epic creation sub-workflow
-- `{project-root}/_bmad/bmb/config.yaml` - BMB configuration (for `output_folder`, `user_name`, etc.)
+- `{project-root}/_bmad/core/config.yaml` - BMB configuration (for `output_folder`, `user_name`, etc.)
 - `{project-root}/_bmad/bmm/config.yaml` - BMM configuration (for `planning_artifacts`)
 
 **For adversarial-auto-fix:**
-- `{project-root}/_bmad/bmb/config.yaml` - BMB configuration (for output paths)
+- `{project-root}/_bmad/core/config.yaml` - BMB configuration (for output paths)
 - `{project-root}/_bmad/core/tasks/review-adversarial-general.xml` - Adversarial review task
 
 ### Configuration Requirements
@@ -154,24 +126,20 @@ The workflows expect:
 3. Configure paths in workflow `config.yaml` files if needed
 4. Ensure your project has the required BMAD modules installed
 
+**Config location**: BMAD installs workflow config to `_bmad/_config/custom/orchestrate/workflows/{name}/config.yaml`. Workflows load from that canonical path (not from the workflow folder). The module's `workflows/*/config.yaml` files are the source that gets copied there.
+
+**Skills**: Module-bundled at `_bmad/orchestrate/.claude/skills/`. Workflows load from there by default. No manual copy needed.
+
 ### Running Workflows
 
 **Orchestrate Story:**
 ```
-@orchestrate-bmad-story
-```
-or
-```
-@_bmad/my-custom-bmad/workflows/orchestrate-story/workflow.md
+/bmad-orchestrate-story
 ```
 
 **Orchestrate Planning Documents:**
 ```
-@orchestrate-bmad-planning-documents
-```
-or
-```
-@_bmad/my-custom-bmad/workflows/orchestrate-planning-documents/workflow.md
+/bmad-orchestrate-planning-documents
 ```
 
 **Adversarial Auto-Fix:**
@@ -180,7 +148,7 @@ or
 ```
 or
 ```
-@_bmad/my-custom-bmad/workflows/adversarial-auto-fix/workflow.md
+/bmad-orchestrate-adversarial-auto-fix
 ```
 
 ## Workflow Details

@@ -3,7 +3,7 @@ name: 'step-02-continue'
 description: 'Handle workflow continuation from previous session'
 
 # File References
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-planning-documents/config.yaml'
 ---
 
 # Step 2: Workflow Continuation

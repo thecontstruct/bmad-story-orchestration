@@ -4,7 +4,7 @@ description: 'Handle workflow continuation from previous session'
 
 # File References
 nextStepFile: './step-03-create-story.md'
-configFile: '../config.yaml'
+configFile: '{project-root}/_bmad/_config/custom/orchestrate/workflows/orchestrate-story/config.yaml'
 ---
 
 # Step 1B: Workflow Continuation
